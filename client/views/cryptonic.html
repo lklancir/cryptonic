@@ -1,0 +1,462 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Cryptonic</title>
+
+    <!-- Bootstrap Core CSS -->
+
+
+</head>
+
+<body data-spy="scroll">
+
+<div class="container">
+			<ul id="gn-menu" class="gn-menu-main">
+				<li class="gn-trigger">
+					<a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+					<nav class="gn-menu-wrapper">
+						<div class="gn-scroller">
+							<ul class="gn-menu">
+								<li><a href="#aesEncryption" class="gn-icon gn-icon-download">AES ENCRYPTION</a></li>
+								<li><a href="#aesDecryption" class="gn-icon gn-icon-cog">AES DECRYPTION</a></li>
+								<li><a href="#rsaEncryption" class="gn-icon gn-icon-help">RSA ENCRYPTION</a></li>
+                <li><a href="#rsaDecryption" class="gn-icon gn-icon-help">RSA DECRYPTION</a></li>
+
+								<li>
+									<a href="#contact" class="gn-icon gn-icon-archive">Contact</a>
+								</li>
+							</ul>
+						</div><!-- /gn-scroller -->
+					</nav>
+				</li>
+				<li><a href="#">CRYPTONIC</a></li>
+				<li><ul class="company-social">
+                            <li class="social-facebook"><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                            <li class="social-twitter"><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                            <li class="social-dribble"><a href="#" target="_blank"><i class="fa fa-dribbble"></i></a></li>
+                            <li class="social-google"><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>	</li>
+			</ul>
+	</div>
+
+	<!-- Section: intro -->
+    <section id="intro" class="intro">
+		<div class="slogan">
+			<h1>This is Cryptonic</h1>
+			<p>Cryptographic algorithms build upon meteor.js</p>
+			<a href="#aesEncryption" class="btn btn-skin scroll">Learn more</a>
+		</div>
+    </section>
+	<!-- /Section: intro -->
+
+	<!-- Section: AESENCRYPTION-->
+    <section id="aesEncryption" class="home-section text-center bg-gray">
+		<div class="heading-about marginbot-50">
+			<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+
+					<div class="section-heading">
+					<h2>AES ENCRYPTION</h2>
+					</div>
+
+
+          <!-- PLAIN TEXT -->
+
+              <div class="form-group">
+                  <label for="plainTextInput">Enter a message you wish to encrypt</label>
+                  <textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
+                      placeholder="Message"></textarea>
+              </div>
+
+          <!-- PLAIN TEXT  END-->
+
+          <!-- SECRET KEY GENERATOR -->
+            <div>
+              <div class="col-lg-6">
+                    <label for="passphraseInput">PassPhrase for the Secret Key</label>
+                    <input type="text" class="form-control" id="passphrase" placeholder="Enter passphrase" />
+              </div>
+
+              <div class="col-lg-3 col-lg-offset-2">
+                    <br>
+                    <button class="btn btn-skin" id="saveSecretKey">Save Key to File</button>
+              </div>
+            </div>
+
+          <!-- SECRET KEY GENERATOR END-->
+            <div class="form-group top-buffer">
+                    <button class="btn btn-warning btn-skin" id="encrypt">ENCRYPT</button>
+            </div>
+          <!-- ENCRYPTED MESSAGE-->
+
+              <div class="form-group top-buffer-2">
+                  <label for="plainTextInput">Encrypted message</label>
+                  <textarea name="cipherText" id="cipherText" class="form-control" rows="9" cols="25" required="required"
+                      placeholder="Encrypted message"></textarea>
+              </div>
+
+          <!-- ENCRYPTED MESSAGE END-->
+
+          <!-- SAVE ENCRYPTED MESSAGE TO FILE-->
+
+            <div>
+              <div class="col-lg-6">
+                    <label for="passphraseInput">Filename to Save As: </label>
+                    <input type="text" class="form-control" id="fileName" placeholder="Enter filename" />
+              </div>
+
+              <div class="col-lg-3 col-lg-offset-2">
+                    <br>
+                    <button class="btn btn-skin" id="saveFile">Save CipherText to File</button>
+              </div>
+            </div>
+
+          <!-- SAVE ENCRYPTED MESSAGE TO FILE END-->
+
+				</div>
+			</div>
+			</div>
+		</div>
+
+	</section>
+	<!-- /Section: AES ENCRYPTION -->
+
+  <!-- /Section: AES DECRYPTION -->
+
+  <section id="aesDecryption" class="home-section text-center">
+  <div class="heading-about marginbot-50">
+    <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+
+        <div class="section-heading">
+        <h2>AES Decryption</h2>
+        </div>
+
+
+        <!-- LOAD ENCRYPTED FILE -->
+        <div class="row">
+          <div class="col-lg-6">
+                <label for="loadFile">Select a File to Load: </label>
+                <input type="file" class="form-control" id="fileToLoad"/>
+          </div>
+
+          <div class="col-lg-3 col-lg-offset-2">
+                <br>
+                <button class="btn btn-skin" id="loadFile">LOAD SELECTED FILE</button>
+          </div>
+        </div>
+
+        <!-- LOAD ENCRYPTED FILE END-->
+        <br><br>
+        <!-- LOAD SECRET KEY -->
+        <div class="row">
+          <div class="col-lg-6">
+                <label for="loadFile">Select a KEY to Load: </label>
+                <input type="file" class="form-control" id="keyToLoad"/>
+          </div>
+
+          <div class="col-lg-3 col-lg-offset-2">
+                <br>
+                <button class="btn btn-skin" id="loadKey">LOAD SELECTED KEY</button>
+          </div>
+        </div>
+
+        <!-- LOAD SECRET KEY END-->
+
+        <div class="form-group top-buffer-2">
+                <button class="btn btn-warning btn-skin" id="aesDecrypt">DECRYPT</button>
+        </div>
+
+
+        <!-- DECRYPT CIPHERTEXT -->
+
+        <div class="form-group">
+            <label for="decryptMessage">Decrypted Ciphertext</label>
+            <textarea name="decryptMessage" id="decryptMessage" class="form-control" rows="9" cols="25" required="required"
+                placeholder="Decrypted Message"></textarea>
+        </div>
+
+
+        <!-- DECRYPT CIPHERTEXT END-->
+
+        <!-- ENCRYPTED MESSAGE-->
+
+
+
+        <!-- ENCRYPTED MESSAGE END-->
+
+        <!-- SAVE ENCRYPTED MESSAGE TO FILE-->
+
+
+
+        <!-- SAVE ENCRYPTED MESSAGE TO FILE END-->
+
+
+      </div>
+    </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- /Section: AES DECRYPTION -->
+
+<!-- /Section: RSA ENCRYPTION -->
+
+<section id="rsaEncryption" class="home-section text-center bg-gray">
+<div class="heading-about marginbot-50">
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+
+      <div class="section-heading">
+      <h2>RSA Encryption</h2>
+      </div>
+
+
+      <!-- GENERATE KEYPAIR -->
+      <div class="form-group top-buffer-2">
+              <button class="btn btn-warning btn-skin" id="generateKeyPair">GENERATE KEYPAIR</button>
+      </div>
+
+      <!-- GENERATE KEYPAIR END-->
+      <br><br>
+
+      <br><br>
+
+      <!-- LOAD PUBLIC KEY -->
+      <div class="row">
+        <div class="col-lg-6">
+              <label for="loadFile">Select a Public KEY: </label>
+              <input type="file" class="form-control" id="publicKeyToLoad"/>
+        </div>
+
+        <div class="col-lg-3 col-lg-offset-2">
+              <br>
+              <button class="btn btn-skin" id="loadPublicKey">LOAD SELECTED KEY</button>
+        </div>
+      </div>
+
+      <!-- LOAD PUBLIC KEY END-->
+      <br><br>
+
+      <!-- LOAD FILE -->
+      <div class="row">
+        <div class="col-lg-6">
+              <label for="fileToBeLoadedRsa">Select a file to Encrpyt with RSA: </label>
+              <input type="file" class="form-control" id="fileToBeLoadedRsa"/>
+        </div>
+
+        <div class="col-lg-3 col-lg-offset-2">
+              <br>
+              <button class="btn btn-skin" id="loadFileRsa">LOAD SELECTED FILE</button>
+        </div>
+      </div>
+
+      <!-- LOAD FILE END-->
+
+      <div class="form-group top-buffer-2">
+              <button class="btn btn-warning btn-skin" id="rsaEncrypt">ENCRYPT</button>
+      </div>
+
+
+    </div>
+  </div>
+  </div>
+</div>
+
+</section>
+
+<!-- /Section: RSA ENCRYPTION -->
+
+<!-- /Section: RSA DECRYPTION -->
+
+<section id="rsaDecryption" class="home-section text-center">
+<div class="heading-about marginbot-50">
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+
+      <div class="section-heading">
+      <h2>RSA Decryption</h2>
+      </div>
+
+      <!-- LOAD PRIVATE KEY -->
+      <div class="row">
+        <div class="col-lg-6">
+              <label for="loadFile">Select a Private KEY: </label>
+              <input type="file" class="form-control" id="privateKeyToLoad"/>
+        </div>
+
+        <div class="col-lg-3 col-lg-offset-2">
+              <br>
+              <button class="btn btn-skin" id="loadPrivateKey">LOAD SELECTED KEY</button>
+        </div>
+      </div>
+
+      <!-- LOAD PRIVATE KEY END-->
+
+      <br><br>
+
+      <!-- LOAD FILE -->
+      <div class="row">
+        <div class="col-lg-6">
+              <label for="fileToBeDecrypted">Select a file to Decrypt with RSA: </label>
+              <input type="file" class="form-control" id="fileToBeDecrypted"/>
+        </div>
+
+        <div class="col-lg-3 col-lg-offset-2">
+              <br>
+              <button class="btn btn-skin" id="loadFileDecrypt">LOAD SELECTED FILE</button>
+        </div>
+      </div>
+
+      <!-- LOAD FILE END-->
+
+      <div class="form-group top-buffer-2">
+              <button class="btn btn-warning btn-skin" id="rsaDecrypt">DECRYPT</button>
+      </div>
+
+
+      <!-- DECRYPT CIPHERTEXT -->
+
+      <div class="form-group">
+          <label for="decryptRsaMessage">Decrypted RSA Ciphertext</label>
+          <textarea name="decryptMessage" id="decryptRsaMessage" class="form-control" rows="9" cols="25" required="required"
+              placeholder="Decrypted Message"></textarea>
+      </div>
+
+
+      <!-- DECRYPT CIPHERTEXT END-->
+
+      <!-- ENCRYPTED MESSAGE-->
+
+
+
+      <!-- ENCRYPTED MESSAGE END-->
+
+      <!-- SAVE ENCRYPTED MESSAGE TO FILE-->
+
+
+
+      <!-- SAVE ENCRYPTED MESSAGE TO FILE END-->
+
+
+    </div>
+  </div>
+  </div>
+</div>
+
+</section>
+
+<!-- /Section: RSA DECRYPTION -->
+
+<!-- /Section: RSA DIGITAL SIGNATURE -->
+
+<section id="rsaDigitalSignature" class="home-section text-center bg-gray">
+<div class="heading-about marginbot-50">
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+
+      <div class="section-heading">
+      <h2>RSA Digital Signature</h2>
+      </div>
+
+
+
+      <!-- LOAD FILE -->
+      <div class="row">
+        <div class="col-lg-6">
+              <label for="fileToBeSigned">Select a file for Digital Signature: </label>
+              <input type="file" class="form-control" id="fileToBeSigned"/>
+        </div>
+
+        <div class="col-lg-3 col-lg-offset-2">
+              <br>
+              <button class="btn btn-skin" id="loadFileOpen">LOAD SELECTED FILE</button>
+        </div>
+      </div>
+
+      <!-- LOAD FILE END-->
+      <br><br>
+      <!-- LOAD PRIVATE KEY -->
+      <div class="row">
+        <div class="col-lg-6">
+              <label for="loadFile">Select a Private KEY: </label>
+              <input type="file" class="form-control" id="privateKeyToLoadDS"/>
+        </div>
+
+        <div class="col-lg-3 col-lg-offset-2">
+              <br>
+              <button class="btn btn-skin" id="loadPrivateKeyDS">LOAD SELECTED KEY</button>
+        </div>
+      </div>
+
+      <!-- LOAD PRIVATE KEY END-->
+
+      <div class="form-group top-buffer-2">
+              <button class="btn btn-warning btn-skin" id="rsaSign">SIGN</button>
+      </div>
+
+
+      <!-- HASH -->
+
+      <div class="form-group">
+          <label for="messageDigest">Message Diggest SHA256</label>
+          <textarea name="messageDigest" id="messageDigest" class="form-control" rows="3" cols="25" required="required"
+              placeholder="SHA256 HASH"></textarea>
+      </div>
+
+
+      <!-- HASH END-->
+
+      <!-- ENCRYPTED MESSAGE-->
+
+
+
+      <!-- ENCRYPTED MESSAGE END-->
+
+      <!-- SAVE ENCRYPTED MESSAGE TO FILE-->
+
+
+
+      <!-- SAVE ENCRYPTED MESSAGE TO FILE END-->
+
+
+    </div>
+  </div>
+  </div>
+</div>
+
+</section>
+
+<!-- /Section: RSA DIGITAL SIGNATURE -->
+
+
+
+
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<p>Copyright &copy; 2015 Luka Klancir <a href="http://siginum.com">Luka Klancir</a></p>
+				</div>
+                <!--
+                    All links in the footer should remain intact.
+                    Licenseing information is available at: http://bootstraptaste.com/license/
+                    You can buy this theme without footer links online at: http://bootstraptaste.com/buy/?theme=Ninestars
+                -->
+			</div>
+		</div>
+	</footer>
+
+
+
+</body>
