@@ -45,7 +45,7 @@ Template.body.events({
 
               downloadLink.click();
 
-              swal("Success!", "Your Pulic and Private keys were successfuly generated!", "success");
+              swal("Success!", "Your Public and Private keys were successfuly generated!", "success");
 
             }
 
@@ -99,6 +99,8 @@ Template.body.events({
           console.log("error", error);
         }
         if(result){
+
+          swal("Success!", "You have successfuly encrypted the given file", "success");
 
           var textToWrite = result;
           var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
@@ -167,8 +169,12 @@ Template.body.events({
         if(result){
           var resToString = result;
           document.getElementById("decryptRsaMessage").value = resToString;
+          swal("Success!", "Your ciphertext was successfuly decrypted", "success");
 
-        }
+          }
+          else {
+          swal("Key and cipher did not match!", "Are you sure you are supposed to read that?", "error");
+          }
       });
   }
 

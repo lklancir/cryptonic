@@ -8,8 +8,14 @@ Meteor.startup(function(){
 });
 Meteor.methods({
 
-  aesEncrypt:function(){
+  aesEncrypt:function(plainText, passPhrase){
 
+    var encrypted = CryptoJS.AES.encrypt(plainText, passPhrase);
+
+    console.log("ENKRIPCIJA");
+    console.log(encrypted.toString());
+
+    return encrypted.toString();
   },
 
   aesDecrypt:function(AES_ciphertext,AES_secretkey){
@@ -25,7 +31,7 @@ Meteor.methods({
 
 
     var keypair = rsa.generateKeyPair({bits: 2048, e: 0x10001});
-    console.log("OKE SAD SMO GA GENERIRALI");
+    console.log("OKE SAD JE GENERATED");
 
     var publicKey = pki.publicKeyToPem(keypair.publicKey)
     var privateKey = pki.privateKeyToPem(keypair.privateKey)
@@ -77,7 +83,20 @@ Meteor.methods({
     return [signature,md.digest().toHex()];
   },
 
-  rsaVerify:function(){
+  rsaVerify:function(pubPem, signature, openFile){
+
+    var publicKey = pki.publicKeyFromPem(pubPem);
+
+    var md = forge.md.sha256.create();
+    md.update(openFile, 'utf8');
+
+    var verified = publicKey.verify(md.digest().bytes(), signature);
+
+    console.log(signature);
+    console.log(openFile);
+    console.log(md.digest().toHex());
+
+    return verified;
 
   }
 

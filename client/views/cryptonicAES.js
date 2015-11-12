@@ -5,12 +5,29 @@ Template.body.events({
 
   "click #encrypt": function(event, template){
 
+        var plainText = $('[id=message]').val();
+        var passPhrase = $('[id=passphrase]').val();
 
-        var encrypted = CryptoJS.AES.encrypt($('[id=message]').val(), $('[id=passphrase]').val());
-        document.getElementById("cipherText").value = encrypted;
+        Meteor.call("aesEncrypt", plainText, passPhrase, function(error, result){
+          if(error){
+            console.log("error", error);
+            swal("Something went wrong!", "Please try again", "error");
+          }
+          if(result){
+            console.log(result);
+            document.getElementById("cipherText").value = result;
+            swal("Success!", "You have successfuly encrypted the given plain text", "success");
 
-        console.log(encrypted);
-        
+          }else {
+            console.log("NEST");
+          }
+        });
+
+        // var encrypted = CryptoJS.AES.encrypt($('[id=message]').val(), $('[id=passphrase]').val());
+        // document.getElementById("cipherText").value = encrypted;
+        //
+        // console.log(encrypted);
+
 
 
   },
@@ -100,8 +117,8 @@ Template.body.events({
     var fileReader = new FileReader();
     fileReader.onload = function(fileLoadedEvent)
     {
-      AES_secretkey = fileLoadedEvent.target.result;
-      console.log(AES_secretkey);
+      AES_secretKey = fileLoadedEvent.target.result;
+      console.log(AES_secretKey);
       // document.getElementById("message").value = textFromFileLoaded;
     };
     fileReader.readAsText(fileToLoad, "UTF-8");
@@ -114,7 +131,7 @@ Template.body.events({
 
 
 
-        Meteor.call("aesDecrypt", AES_ciphertext, AES_secretkey, function(error, result){
+        Meteor.call("aesDecrypt", AES_ciphertext, AES_secretKey, function(error, result){
           if(error){
             console.log("error", error);
             swal("Something went wrong!", "Please try again", "error");

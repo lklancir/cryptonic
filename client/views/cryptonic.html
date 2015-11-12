@@ -20,13 +20,11 @@
 					<nav class="gn-menu-wrapper">
 						<div class="gn-scroller">
 							<ul class="gn-menu">
-								<li><a href="#aesEncryption" class="gn-icon gn-icon-download">AES ENCRYPTION</a></li>
-								<li><a href="#aesDecryption" class="gn-icon gn-icon-cog">AES DECRYPTION</a></li>
-								<li><a href="#rsaEncryption" class="gn-icon gn-icon-help">RSA ENCRYPTION</a></li>
-                <li><a href="#rsaDecryption" class="gn-icon gn-icon-help">RSA DECRYPTION</a></li>
-
-								<li>
-									<a href="#contact" class="gn-icon gn-icon-archive">Contact</a>
+								<li><a href="#aesEncryption" class="gn-icon gn-icon-download">AES Encryption</a></li>
+								<li><a href="#aesDecryption" class="gn-icon gn-icon-cog">AES Decryption</a></li>
+								<li><a href="#rsaEncryption" class="gn-icon gn-icon-help">RSA Encryption</a></li>
+                <li><a href="#rsaDecryption" class="gn-icon gn-icon-help">RSA Decryption</a></li>
+								<li><a href="#DigitalSignatureSign" class="gn-icon gn-icon-archive">Digital Signature</a>
 								</li>
 							</ul>
 						</div><!-- /gn-scroller -->
@@ -44,10 +42,11 @@
 
 	<!-- Section: intro -->
     <section id="intro" class="intro">
-		<div class="slogan">
+		<div class="slogan text-sh">
 			<h1>This is Cryptonic</h1>
-			<p>Cryptographic algorithms build upon meteor.js</p>
-			<a href="#aesEncryption" class="btn btn-skin scroll">Learn more</a>
+			<div class="text-sh">
+			  <p><strong>Cryptographic <a href="#aesEncryption" class="btn-skin scroll">algorithms</a> implemented and built upon meteor.js</strong></p>
+			</div>
 		</div>
     </section>
 	<!-- /Section: intro -->
@@ -178,7 +177,7 @@
         <div class="form-group">
             <label for="decryptMessage">Decrypted Ciphertext</label>
             <textarea name="decryptMessage" id="decryptMessage" class="form-control" rows="9" cols="25" required="required"
-                placeholder="Decrypted Message"></textarea>
+                placeholder="Decrypted Message" readonly></textarea>
         </div>
 
 
@@ -328,24 +327,8 @@
       <div class="form-group">
           <label for="decryptRsaMessage">Decrypted RSA Ciphertext</label>
           <textarea name="decryptMessage" id="decryptRsaMessage" class="form-control" rows="9" cols="25" required="required"
-              placeholder="Decrypted Message"></textarea>
+              placeholder="Decrypted Message" readonly></textarea>
       </div>
-
-
-      <!-- DECRYPT CIPHERTEXT END-->
-
-      <!-- ENCRYPTED MESSAGE-->
-
-
-
-      <!-- ENCRYPTED MESSAGE END-->
-
-      <!-- SAVE ENCRYPTED MESSAGE TO FILE-->
-
-
-
-      <!-- SAVE ENCRYPTED MESSAGE TO FILE END-->
-
 
     </div>
   </div>
@@ -356,16 +339,16 @@
 
 <!-- /Section: RSA DECRYPTION -->
 
-<!-- /Section: RSA DIGITAL SIGNATURE -->
+<!-- /Section: Digital Signature - Sign -->
 
-<section id="rsaDigitalSignature" class="home-section text-center bg-gray">
+<section id="DigitalSignatureSign" class="home-section text-center bg-gray">
 <div class="heading-about marginbot-50">
   <div class="container">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2">
 
       <div class="section-heading">
-      <h2>RSA Digital Signature</h2>
+      <h2>Digital Signature - Sign</h2>
       </div>
 
 
@@ -408,7 +391,7 @@
       <!-- HASH -->
 
       <div class="form-group">
-          <label for="messageDigest">Message Diggest SHA256</label>
+          <label for="messageDigest">Message Diggest from loaded file SHA256 (HASH)</label>
           <textarea name="messageDigest" id="messageDigest" class="form-control" rows="3" cols="25" required="required"
               placeholder="SHA256 HASH"></textarea>
       </div>
@@ -436,6 +419,83 @@
 
 </section>
 
+<!-- /Section: DIGITAL SIGNATURE - Sign END -->
+
+
+<!-- /Section: Digital Signature - Verify -->
+
+<section id="DigitalSignatureVerify" class="home-section text-center">
+<div class="heading-about marginbot-50">
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+
+      <div class="section-heading">
+      <h2>Digital Signature - Verify</h2>
+      </div>
+
+
+
+      <!-- LOAD OPEN FILE FOR VERIFICATION -->
+      <div class="row">
+        <div class="col-lg-6">
+              <label for="fileToBeVerified">Select a file for Verification: </label>
+              <input type="file" class="form-control" id="fileToBeVerified"/>
+        </div>
+
+        <div class="col-lg-3 col-lg-offset-2">
+              <br>
+              <button class="btn btn-skin" id="loadFileOpenVerify">LOAD SELECTED FILE</button>
+        </div>
+      </div>
+
+      <!-- LOAD OPEN FILE FOR VERIFICATION END-->
+      <br><br>
+
+      <!-- LOAD SIGNATURE -->
+      <div class="row">
+        <div class="col-lg-6">
+              <label for="signature">Select Signature: </label>
+              <input type="file" class="form-control" id="signature"/>
+        </div>
+
+        <div class="col-lg-3 col-lg-offset-2">
+              <br>
+              <button class="btn btn-skin" id="loadSignature">LOAD SELECTED FILE</button>
+        </div>
+      </div>
+
+      <!-- LOAD SIGNATURE END-->
+      <br><br>
+
+      <!-- LOAD PUBLIC KEY -->
+      <div class="row">
+        <div class="col-lg-6">
+              <label for="loadFile">Select a Public KEY: </label>
+              <input type="file" class="form-control" id="publicKeyToLoadDS"/>
+        </div>
+
+        <div class="col-lg-3 col-lg-offset-2">
+              <br>
+              <button class="btn btn-skin" id="loadPublicKeyDS">LOAD SELECTED KEY</button>
+        </div>
+      </div>
+
+      <!-- LOAD PUBLIC KEY END-->
+
+      <div class="form-group top-buffer-2">
+              <button class="btn btn-warning btn-skin" id="rsaVerify">VERIFY</button>
+      </div>
+
+
+
+    </div>
+  </div>
+  </div>
+</div>
+
+</section>
+
 <!-- /Section: RSA DIGITAL SIGNATURE -->
 
 
@@ -445,7 +505,7 @@
 	<footer>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12 col-lg-12">
+				<div class="col-md-12 col-lg-12" style="color:black;">
 					<p>Copyright &copy; 2015 Luka Klancir <a href="http://siginum.com">Luka Klancir</a></p>
 				</div>
                 <!--
