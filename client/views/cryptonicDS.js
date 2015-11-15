@@ -12,6 +12,8 @@ Template.body.events({
     {
       openFile = fileLoadedEvent.target.result;
       console.log(openFile);
+      $("#loadFileOpen").css("background-color", "#28c3ab");
+
       // document.getElementById("message").value = textFromFileLoaded;
     };
     fileReader.readAsText(fileToLoad, "UTF-8");
@@ -28,6 +30,8 @@ Template.body.events({
     {
       privateKey = fileLoadedEvent.target.result;
       console.log(privateKey);
+      $("#loadPrivateKeyDS").css("background-color", "#28c3ab");
+
       // document.getElementById("message").value = textFromFileLoaded;
     };
     fileReader.readAsText(fileToLoad, "UTF-8");
@@ -39,7 +43,7 @@ Template.body.events({
       if(error){
         console.log("error", error);
         swal("Something went wrong!", "Please try again", "error");
-        
+
       }
       if(result){
         document.getElementById("messageDigest").value = result[1];
@@ -83,6 +87,8 @@ Template.body.events({
     {
       openFile = fileLoadedEvent.target.result;
       console.log(openFile);
+      $("#loadFileOpenVerify").css("background-color", "#28c3ab");
+
       // document.getElementById("message").value = textFromFileLoaded;
     };
     fileReader.readAsText(fileToLoad, "UTF-8");
@@ -97,6 +103,8 @@ Template.body.events({
     {
       signature = fileLoadedEvent.target.result;
       console.log(signature);
+      $("#loadSignature").css("background-color", "#28c3ab");
+
       // document.getElementById("message").value = textFromFileLoaded;
     };
     fileReader.readAsText(fileToLoad, "UTF-8");
@@ -113,6 +121,8 @@ Template.body.events({
     {
       publicKey = fileLoadedEvent.target.result;
       console.log(publicKey);
+      $("#loadPublicKeyDS").css("background-color", "#28c3ab");
+
       // document.getElementById("message").value = textFromFileLoaded;
     };
     fileReader.readAsText(fileToLoad, "UTF-8");

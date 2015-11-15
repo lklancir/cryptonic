@@ -41,11 +41,11 @@ Template.body.events({
         var downloadLink = document.createElement("a");
         downloadLink.download = fileNameToSaveAs;
         downloadLink.innerHTML = "Download File";
-        if (window.webkitURL != null)
+        if (window.URL != null)
         {
           // Chrome allows the link to be clicked
           // without actually adding it to the DOM.
-          downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+          downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
         }
         else
         {
@@ -73,11 +73,11 @@ Template.body.events({
         var downloadLink = document.createElement("a");
         downloadLink.download = fileNameToSaveAs;
         downloadLink.innerHTML = "Download File";
-        if (window.webkitURL != null)
+        if (window.URL != null)
         {
           // Chrome allows the link to be clicked
           // without actually adding it to the DOM.
-          downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+          downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
         }
         else
         {
@@ -103,6 +103,7 @@ Template.body.events({
     {
       AES_ciphertext = fileLoadedEvent.target.result;
       console.log(AES_ciphertext);
+      $("#loadFile").css("background-color", "#28c3ab");
       // document.getElementById("message").value = textFromFileLoaded;
     };
     fileReader.readAsText(fileToLoad, "UTF-8");
@@ -119,6 +120,7 @@ Template.body.events({
     {
       AES_secretKey = fileLoadedEvent.target.result;
       console.log(AES_secretKey);
+      $("#loadKey").css("background-color", "#28c3ab");
       // document.getElementById("message").value = textFromFileLoaded;
     };
     fileReader.readAsText(fileToLoad, "UTF-8");

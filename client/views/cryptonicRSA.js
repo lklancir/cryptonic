@@ -5,6 +5,9 @@ var cipherText;
 
 Template.body.events({
   "click #generateKeyPair": function(event, template){
+      NProgress.set(0.4);
+      NProgress.start()
+      
       Meteor.call("rsaKeyPair", function(error, result){
         if(error){
           console.log("error", error);
@@ -31,7 +34,7 @@ Template.body.events({
               {
                 // Chrome allows the link to be clicked
                 // without actually adding it to the DOM.
-                downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+                downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
               }
               else
               {
@@ -48,6 +51,7 @@ Template.body.events({
               swal("Success!", "Your Public and Private keys were successfuly generated!", "success");
 
             }
+            NProgress.done();
 
 
 
@@ -68,6 +72,7 @@ Template.body.events({
     {
       publicKey = fileLoadedEvent.target.result;
       console.log(publicKey);
+      $("#loadPublicKey").css("background-color", "#28c3ab");
       // document.getElementById("message").value = textFromFileLoaded;
     };
     fileReader.readAsText(fileToLoad, "UTF-8");
@@ -85,6 +90,8 @@ Template.body.events({
 
       plainText = fileLoadedEvent.target.result;
       console.log(plainText);
+      $("#loadFileRsa").css("background-color", "#28c3ab");
+
       // document.getElementById("message").value = textFromFileLoaded;
     };
     fileReader.readAsText(fileToLoad, "UTF-8");
@@ -97,6 +104,7 @@ Template.body.events({
       Meteor.call("rsaEncrypt", publicKey, plainText, function(error, result){
         if(error){
           console.log("error", error);
+          swal("Error!", "Message is too long for PKCS#1 v1.5 padding.", "error");
         }
         if(result){
 
@@ -113,7 +121,7 @@ Template.body.events({
           {
             // Chrome allows the link to be clicked
             // without actually adding it to the DOM.
-            downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+            downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
           }
           else
           {
@@ -140,6 +148,8 @@ Template.body.events({
     {
       privateKey = fileLoadedEvent.target.result;
       console.log(privateKey);
+      $("#loadPrivateKey").css("background-color", "#28c3ab");
+
       // document.getElementById("message").value = textFromFileLoaded;
     };
     fileReader.readAsText(fileToLoad, "UTF-8");
@@ -155,6 +165,8 @@ Template.body.events({
     {
       cipherText = fileLoadedEvent.target.result;
       console.log(cipherText);
+      $("#loadFileDecrypt").css("background-color", "#28c3ab");
+
 
     };
     fileReader.readAsText(fileToLoad, "UTF-8");

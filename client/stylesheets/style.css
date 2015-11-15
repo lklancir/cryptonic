@@ -693,15 +693,17 @@ footer {
 }
 
 footer p {
-	color: #f8f8f8;
+	color: #black;
+  font-weight: bold;
 }
 
 footer a {
-	color: #fefefe;
+  font-weight: bold;
+
 }
 
 footer a:hover {
-	color: #fff;
+	color: #f0ad4e;
 }
 
 /* ===========================

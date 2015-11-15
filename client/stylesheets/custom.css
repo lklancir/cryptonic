@@ -9,3 +9,8 @@
 .text-sh {
     text-shadow: 0 0 7px rgba(0, 0, 0, 0.9);
 }
+
+.upload-event {
+  background-color: #28c3ab;
+  border-color: #28c3ab;
+}
